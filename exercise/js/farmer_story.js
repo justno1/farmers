@@ -4,10 +4,10 @@
 
     document.getElementById('btnSubmit').addEventListener("click",function(){
 
-    	alert('something');
+    	alert('INSIDE JAVASCRIPT');
 		var Crop = Parse.Object.extend("crop");
 		var crop = new Crop();
-/*
+
 		crop.set("cropName",document.getElementById('crop').value);
 		crop.set("farmerName","somebody");
 		crop.set("feature",document.getElementById('feature').value);
@@ -15,8 +15,10 @@
 		crop.set("sellingTime",document.getElementById('sell_date').value);
 		crop.set("seedingPosition",document.getElementById('location').value);
 		crop.set("cropImageUrl",document.getElementById('photoUrl').value);
-*/
-		crop.save({
+
+		crop.save(null,
+/*
+		{
 			cropName:"no",
 			farmerName:"no",
 			feature:"no",
@@ -24,7 +26,9 @@
 			sellingTime:"no",
 			seedingPosition:"no",
 			cropImageUrl:"no",
-		},{
+		},
+*/
+		{
 		  success: function(crop) {
 		    // Execute any logic that should take place after the object is saved.
 		    alert('New object created with objectId: ' + crop.id);
