@@ -2,6 +2,7 @@
 
 	Parse.initialize("lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek","PAQaaFUhvx52GXTHFsZ4MeLF2aaQNrJT1xx6je2S");
 
+
     document.getElementById('btnSubmit').addEventListener("click",function(){
 
     	alert('INSIDE JAVASCRIPT');
@@ -12,23 +13,11 @@
 		crop.set("farmerName","somebody");
 		crop.set("feature",document.getElementById('feature').value);
 		crop.set("seedingTime",document.getElementById('start_time').value);
-		crop.set("sellingTime",document.getElementById('sell_date').value);
+	//	crop.set("sellingTime",document.getElementById('sell_date').value);
 		crop.set("seedingPosition",document.getElementById('location').value);
 		crop.set("cropImageUrl",document.getElementById('photoUrl').value);
 
-		crop.save(null,
-/*
-		{
-			cropName:"no",
-			farmerName:"no",
-			feature:"no",
-			seedingTime:"no",
-			sellingTime:"no",
-			seedingPosition:"no",
-			cropImageUrl:"no",
-		},
-*/
-		{
+		crop.save(null,{
 		  success: function(crop) {
 		    // Execute any logic that should take place after the object is saved.
 		    alert('New object created with objectId: ' + crop.id);
