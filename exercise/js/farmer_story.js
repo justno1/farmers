@@ -12,7 +12,7 @@
 		crop.set("cropName",document.getElementById('crop').value);
 		crop.set("farmerName","somebody");
 		crop.set("feature",document.getElementById('feature').value);
-		crop.set("seedingTime",document.getElementById('start_time').value);
+	//	crop.set("seedingTime",document.getElementById('start_time').value);
 	//	crop.set("sellingTime",document.getElementById('sell_date').value);
 		crop.set("seedingPosition",document.getElementById('location').value);
 		crop.set("cropImageUrl",document.getElementById('photoUrl').value);
