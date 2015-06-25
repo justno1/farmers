@@ -77,13 +77,13 @@
             success: function(data) {
               alert("File available at: " + data.url);
               document.getElementById('photoUrl').value = data.url;
-              document.getElementById('new-photo').style.backgroundImage= "url('data.url')"
             },
             error: function(data) {
               var obj = jQuery.parseJSON(data);
               alert(obj.error);
             }
           });
+          document.getElementById('new-photo').style.backgroundImage= "url('document.getElementById('photoUrl').value')"
         });
       });
     </script>
