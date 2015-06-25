@@ -75,7 +75,7 @@
             data: file,
             processData: false,
             contentType: false,
-            imgUrl: data+url;
+            imgUrl: data+url,
             success: function(data) {
               alert("File available at: " + data.url);
               document.getElementById('photoUrl').value = imgUrl;
