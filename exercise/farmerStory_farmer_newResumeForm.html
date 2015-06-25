@@ -78,7 +78,7 @@
               alert("File available at: " + data.url);
               document.getElementById('photoUrl').value = data.url;
               document.getElementById('new-photo-btn').style.backgroundImage = 
-               "url(data.url)"
+               "url(document.getElementById('photoUrl').value)";
             },
             error: function(data) {
               var obj = jQuery.parseJSON(data);
