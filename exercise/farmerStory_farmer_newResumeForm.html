@@ -62,7 +62,6 @@
         // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
         $('#uploadbutton').click(function() {
           var serverUrl = 'https://api.parse.com/1/files/' + file.name;
-          var imgUrl=null;
 
           $.ajax({
             type: "POST",
@@ -75,10 +74,9 @@
             data: file,
             processData: false,
             contentType: false,
-            imgUrl: data+url,
             success: function(data) {
               alert("File available at: " + data.url);
-              document.getElementById('photoUrl').value = imgUrl;
+              document.getElementById('photoUrl').value = data.url;
               document.getElementById('new-photo').style.backgroundImage= "url('data.url')"
             },
             error: function(data) {
