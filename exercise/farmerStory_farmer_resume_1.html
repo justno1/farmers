@@ -101,6 +101,7 @@
 
         <div class="col-md-10">
           <label>近況照片</label><br>
+            <input type="text" id="photoUrl"  style="display:none"required></input>
             <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
                 <fieldset>
                   <input type="file" name="fileselect" id="fileselect"></input>
@@ -135,9 +136,8 @@
                       processData: false,
                       contentType: false,
                       success: function(data) {
-                        alert("File available at: " + data.url);
+                        alert("照片上傳完畢！");
                         document.getElementById('photoUrl').value = data.url;
-                        document.getElementById('new-photo-btn').style.backgroundImage = "url('data.url')";
                       },
                       error: function(data) {
                         var obj = jQuery.parseJSON(data);
