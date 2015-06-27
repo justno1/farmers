@@ -16,6 +16,9 @@
 		crop.set("sellingTime",document.getElementById('sell_date').value);
 		crop.set("seedingPosition",document.getElementById('location').value);
 		crop.set("cropImageUrl",document.getElementById('photoUrl').value);
+		crop.addUnique("recentTitle","近況1");
+		crop.addUnique("recentDate",document.getElementById('start_time').value);
+		crop.addUnique("recentImage",document.getElementById('photoUrl').value);
 
 		crop.save(null,{
 		  success: function(crop) {
