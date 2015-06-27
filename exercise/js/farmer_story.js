@@ -19,6 +19,7 @@
 		crop.addUnique("recentTitle","近況1");
 		crop.addUnique("recentDate",document.getElementById('start_time').value);
 		crop.addUnique("recentImage",document.getElementById('photoUrl').value);
+		crop.save();
 
 		crop.save(null,{
 		  success: function(crop) {
