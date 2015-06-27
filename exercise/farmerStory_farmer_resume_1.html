@@ -160,8 +160,10 @@
           // Do something with the returned Parse.Object values
           for (var i = 0; i < results.length; i++) {
             var object = results[i];
-            alert(object.get('cropName') + ' - ' + object.get('cropImageUrl'));
-          }
+              document.getElementById('cropName').value = object.get('cropName');
+              document.getElementById('feature').value = object.get('feature');
+              document.getElementById('seedingTime').value = object.get('seedingTime');
+              document.getElementById('photoUrl').value = object.get('photoUrl');          }
         },
         error: function(error) {
           alert("Error: " + error.code + " " + error.message);
