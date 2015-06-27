@@ -35,24 +35,24 @@
 		<section>
         <div class="col-md-2">
           <div class="tag notOnS">未上市</div>
-          <div class="picBig"><img src=""></div>
+          <div class="picBig" id="picBig"><img src=""></div>
         </div>
         <div class="col-md-10 resumeInfo">
           <div class="col-md-10">
-            <span class="cropTitle"><b>菜名#1</b></span><span id="bookMarkNum"><i class="fa fa-star"></i> 10人加書籤</span><span id="trackNum"><i class="fa fa-rss"></i> 3人訂閱</span>
+            <span class="cropTitle" id="cropName"><b>菜名#1</b></span><span id="bookMarkNum"><i class="fa fa-star"></i> 10人加書籤</span><span id="trackNum"><i class="fa fa-rss"></i> 3人訂閱</span>
           </div>
           <div class="col-md-2">
             <a href="#" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-pencil"></span>　編輯</a>
           </div>
           <div class="col-md-6">
-            <div class="underLine detail"><i class="fa fa-clock-o"></i>　播種時間</div>
-            <div class="underLine detail"><i class="fa fa-certificate"></i>　feature</div>
+            <div class="underLine detail" id="seedingTime"><i class="fa fa-clock-o"></i>　播種時間</div>
+            <div class="underLine detail" id="feature"><i class="fa fa-certificate"></i>　feature</div>
             <div class="detail"><i class="fa fa-bullhorn"></i>　近況<span class="recentDay">#天前</span></div>
           </div>
           <div class="col-md-6">
-            <div class="underLine detail"><i class="fa fa-user"></i>　洪良凱</div>
-            <div class="underLine detail"><i class="fa fa-location-arrow"></i>　種植地</div>
-            <div class="detail"><i class="fa fa-calendar"></i>　預定販售日</div>
+            <div class="underLine detail" id="farmerName"><i class="fa fa-user"></i>　洪良凱</div>
+            <div class="underLine detail" id="seedingPosition"><i class="fa fa-location-arrow"></i>　種植地</div>
+            <div class="detail" id="sellingTime"><i class="fa fa-calendar"></i>　預定販售日</div>
           </div>
         </div>
 				<!-- <img src="resume_1.jpg"> -->
@@ -163,7 +163,10 @@
               document.getElementById('cropName').value = object.get('cropName');
               document.getElementById('feature').value = object.get('feature');
               document.getElementById('seedingTime').value = object.get('seedingTime');
-              document.getElementById('photoUrl').value = object.get('photoUrl');          }
+              document.getElementById('farmerName').value = object.get('farmerName');
+              document.getElementById('seedingPosition').value = object.get('seedingPosition');
+              document.getElementById('sellingTime').value = object.get('sellingTime');
+           }
         },
         error: function(error) {
           alert("Error: " + error.code + " " + error.message);
