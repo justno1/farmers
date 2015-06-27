@@ -75,11 +75,24 @@
               <script>
                 $('#btn-success').on('click', function(){
                     var Crop = Parse.Object.extend("crop");
-                    var crop = new Crop();
-                    crop.addUnique("recentTitle",document.getElementById('latest_change').value);
-                    crop.addUnique("recentDate",document.getElementById('start_time').value);
-                    crop.addUnique("recentImage",document.getElementById('photoUrl').value);
-                    crop.save();
+                    var query = new Parse.Query(crop);
+                    query.equalTo("cropName", "RealBanana");
+                    query.find({
+                      success: function(results) {
+                        alert("Successfully retrieved " + results.length + " crops.");
+                        // Do something with the returned Parse.Object values
+                        for (var i = 0; i < results.length; i++) {
+                          var object = results[i];
+                          object.addUnique("recentTitle",document.getElementById('latest_change').value);
+                          object.addUnique("recentDate",document.getElementById('start_time').value);
+                          object.addUnique("recentImage",document.getElementById('photoUrl').value);
+                          object.save();
+                        }
+                      },
+                      error: function(error) {
+                        alert("Error: " + error.code + " " + error.message);
+                      }
+                    });        
                   });
                 });
               </script>
@@ -88,15 +101,60 @@
 
         <div class="col-md-10">
           <label>近況照片</label><br>
-          <button id="latest_change_pic" class="btn btn-default"><i class="fa fa-plus"></i></button>
-        </div>
+            <form id="fileupload" name="fileupload" enctype="multipart/form-data" method="post">
+                <fieldset>
+                  <input type="file" name="fileselect" id="fileselect"></input>
+                  <input id="uploadbutton" type="button" value="Upload to Parse"/>
+                </fieldset>
+              </form>
+
+              <script type="text/javascript">
+                $(function() {
+                  var file;
+
+                  // Set an event listener on the Choose File field.
+                  $('#fileselect').bind("change", function(e) {
+                    var files = e.target.files || e.dataTransfer.files;
+                    // Our file var now holds the selected file
+                    file = files[0];
+                  });
+
+                  // This function is called when the user clicks on Upload to Parse. It will create the REST API request to upload this image to Parse.
+                  $('#uploadbutton').click(function() {
+                    var serverUrl = 'https://api.parse.com/1/files/' + file.name;
+
+                    $.ajax({
+                      type: "POST",
+                      beforeSend: function(request) {
+                        request.setRequestHeader("X-Parse-Application-Id", 'lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek');
+                        request.setRequestHeader("X-Parse-REST-API-Key", 'iOGF3JgHMKhnSzRLM2XGRNaGwanahbzv7pAAlqjQ');
+                        request.setRequestHeader("Content-Type", file.type);
+                      },
+                      url: serverUrl,
+                      data: file,
+                      processData: false,
+                      contentType: false,
+                      success: function(data) {
+                        alert("File available at: " + data.url);
+                        document.getElementById('photoUrl').value = data.url;
+                        document.getElementById('new-photo-btn').style.backgroundImage = "url('data.url')";
+                      },
+                      error: function(data) {
+                        var obj = jQuery.parseJSON(data);
+                        alert(obj.error);
+                      }
+                    });
+                  });
+                });
+              </script>
+            </div>
       </div>
     	
     <script>
       Parse.initialize("lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek","PAQaaFUhvx52GXTHFsZ4MeLF2aaQNrJT1xx6je2S");
       var crop = Parse.Object.extend("crop");
       var query = new Parse.Query(crop);
-      query.equalTo("farmerName", "spada");
+      query.equalTo("farmerName", "somebody");
       query.find({
         success: function(results) {
           alert("Successfully retrieved " + results.length + " crops.");
