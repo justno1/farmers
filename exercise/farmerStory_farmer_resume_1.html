@@ -79,8 +79,7 @@
                     query.equalTo("cropName", "RealBanana");
                     query.find({
                       success: function(results) {
-                        alert("Successfully retrieved " + results.length + " crops.");
-                        // Do something with the returned Parse.Object values
+                        alert("Successful Query");
                         for (var i = 0; i < results.length; i++) {
                           var object = results[i];
                           object.addUnique("recentTitle",document.getElementById('latest_change').value);
