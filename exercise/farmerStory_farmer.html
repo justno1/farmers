@@ -166,10 +166,10 @@
             // Do something with the returned Parse.Object values
             for (var i = 0; i < results.length; i++) { 
               var object = results[i];
-              document.getElementById('cropName').value = object.cropName;
-              document.getElementById('feature').value = object.feature;
-              document.getElementById('seedingTime').value = object.seedingTime;
-              document.getElementById('photoUrl').value = object.photoUrl;
+              document.getElementById('cropName').value = object.get('cropName');
+              document.getElementById('feature').value = object.get('feature');
+              document.getElementById('seedingTime').value = object.get('seedingTime');
+              document.getElementById('photoUrl').value = object.get('photoUrl');
             }
           },
           error: function(error) {
