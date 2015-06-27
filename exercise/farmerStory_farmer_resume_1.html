@@ -82,8 +82,8 @@
     	
     <script>
       Parse.initialize("lb68hfMRYgqhmuro8Ook5xux5mORCjF59w6Exfek","PAQaaFUhvx52GXTHFsZ4MeLF2aaQNrJT1xx6je2S");
-      var certainCrop = Parse.Object.extend("crop");
-      var query = new Parse.Query(certainCrop);
+      var crop = Parse.Object.extend("crop");
+      var query = new Parse.Query(crop);
       query.equalTo("farmerName", "somebody");
       query.find({
         success: function(results) {
